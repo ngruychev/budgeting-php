@@ -1,0 +1,41 @@
+#login {
+  border: 1px solid gray;
+  border-radius: 5%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: grid;
+  gap: 5px;
+  grid-template-areas:
+    "h1 h1"
+    "l1 i1"
+    "l2 i2"
+    "btn btn";
+}
+
+#h1 {
+  grid-area: h1;
+  text-align: center;
+}
+
+#username_label {
+  grid-area: l1;
+}
+
+#username {
+  grid-area: i1;
+}
+
+#password_label {
+  grid-area: l2;
+}
+
+#password {
+  grid-area: i2;
+}
+
+#login_button {
+  grid-area: btn;
+}

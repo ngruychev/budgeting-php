@@ -1,0 +1,48 @@
+@media screen and (min-width: 500px) {
+  .user_infobox {
+    float: right;
+    position: relative;
+    top: 0.5em;
+    border-left: 1px solid gray;
+    padding-left: 1em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav:focus .user_infobox::before {
+    content: " ";
+    display: block;
+    border-top: 1px solid gray;
+    position: relative;
+    z-index: 9999;
+  }
+}
+
+.msg--error {
+  border-color: #e44;
+  background-color: #fdd;
+}
+
+.msg--success {
+  border-color: #2d2;
+  background-color: #dfd;
+}
+
+.msg--info {
+  border-color: #44e;
+  background-color: #ddf;
+}
+
+.msg--warning {
+  border-color: rgb(238, 227, 68);
+  background-color: rgb(254, 255, 221);
+}
+
+.msg--float {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 50%;
+  z-index: 9999;
+}
