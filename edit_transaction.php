@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $transaction = R::dispense("transaction");
     $transaction->amount = 0;
     $transaction->type = "expense";
-    $transaction->category = R::load("category", 1);
+    $transaction->category = reset($CURRENT_USER->ownCategoryList);
     $transaction->description = "";
     $transaction->comment = "";
     $transaction->date = date("Y-m-d");
@@ -56,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <p class="msg msg--error msg--float">Type must be either income or expense</p>
     <?php } else if (!in_array($category, array_map(fn($c) => $c->id, R::findAll("category")))) { ?>
       <p class="msg msg--error msg--float">Category must be a valid category</p>
+    <?php } else if (R::load("category", $category)->user->id != $CURRENT_USER->id) { ?>
+      <p class="msg msg--error msg--float">You don't own this category</p>
     <?php } else if (strlen($comment) > 255) { ?>
       <p class="msg msg--error msg--float">Comment must be at most 255 characters long</p>
     <?php } else if (strlen($description) > 255) { ?>
@@ -110,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <input type="hidden" name="id" value="<?php echo $transaction->id; ?>">
       <label for="amount">
         Amount:
-        <input type="number" name="amount" id="amount" value="<?php echo htmlspecialchars($transaction->amount / 100); ?>">
+        <input type="number" name="amount" id="amount" step="0.01" value="<?php echo htmlspecialchars($transaction->amount / 100); ?>">
       </label>
       <br>
       <label for="type">
@@ -140,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <label for="category">
         Category:
         <select name="category" id="category">
-          <?php foreach (R::findAll("category") as $category) { ?>
+          <?php foreach ($CURRENT_USER->ownCategoryList as $category) { ?>
             <option value="<?php echo $category->id; ?>" <?php if ($category->id == $transaction->category->id) { echo "selected"; } ?>><?php echo htmlspecialchars($category->name); ?></option>
           <?php } ?>
         </select>

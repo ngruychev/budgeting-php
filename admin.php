@@ -1,7 +1,7 @@
 <?php
 require_once "util/require_admin.php";
 require_once "./util/rb_config.php";
-if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] == "Create") {
+if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] == "Create user") {
   $new_user = R::dispense("user");
   if (R::findOne("user", "username = ?", [$_POST["username"]])) { ?>
     <p class="msg msg--error msg--float">Username already exists</p>
@@ -13,9 +13,21 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["s
     $new_user->username = $_POST["username"];
     $new_user->password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $new_user->roles = "";
+    $new_user->ownCategoryList[] = R::dispense("category");
+    reset($new_user->ownCategoryList)->name = "Food";
+    reset($new_user->ownCategoryList)->user = $new_user;
+    $new_user->ownCategoryList[] = R::dispense("category");
+    reset($new_user->ownCategoryList)->name = "Transport";
+    reset($new_user->ownCategoryList)->user = $new_user;
+    $new_user->ownCategoryList[] = R::dispense("category");
+    reset($new_user->ownCategoryList)->name = "Entertainment";
+    reset($new_user->ownCategoryList)->user = $new_user;
+    $new_user->ownCategoryList[] = R::dispense("category");
+    reset($new_user->ownCategoryList)->name = "Other";
+    reset($new_user->ownCategoryList)->user = $new_user;
     R::store($new_user);
   }
-} else if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] == "Switch") {
+} else if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] == "Switch to user") {
   $su_user = R::findOne("user", "username = ?", [$_POST["username"]]);
   if ($su_user) {
     $_SESSION["user_id"] = $su_user->id;
@@ -23,18 +35,6 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["s
   } else { ?>
     <p class="msg msg--error msg--float">User not found</p>
   <?php }
-} else if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] == "Add category") {
-  $cat_name = $_POST["cat_name"];
-  if (strlen($cat_name) < 3) { ?>
-    <p class="msg msg--error msg--float">Category name should be at least 3 characters long</p>
-  <?php } else {
-    $category = R::dispense("category");
-    $category->name = $cat_name;
-    R::store($category);
-    ?>
-    <p class="msg msg--success msg--float">Category <?php echo htmlspecialchars($cat_name); ?> created</p>
-    <?php
-  }
 }
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["s
         <input type="password" name="password" id="password">
       </label>
       <br>
-      <input type="submit" name="submit" value="Create">
+      <input type="submit" name="submit" value="Create user">
     </fieldset>
   </form>
   <form action="admin.php" method="post">
@@ -81,26 +81,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST" && $_POST["s
         <input type="text" name="username" id="username">
       </label>
       <br>
-      <input type="submit" name="submit" value="Switch">
-    </fieldset>
-  </form>
-  <details>
-    <summary>Category list</summary>
-    <ul>
-        <?php foreach (R::findAll("category") as $category) { ?>
-          <li><?php echo htmlspecialchars($category->name); ?></li>
-        <?php } ?>
-    </ul>
-  </details>
-  <form action="admin.php" method="post">
-    <fieldset>
-      <legend>Add category</legend>
-      <label for="cat_name">
-        Category name:
-        <input type="text" name="cat_name" id="cat_name">
-      </label>
-      <br>
-      <input type="submit" value="Add category" name="submit">
+      <input type="submit" name="submit" value="Switch to user">
     </fieldset>
   </form>
 </body>

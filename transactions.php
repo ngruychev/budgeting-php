@@ -54,7 +54,7 @@ require_once "util/require_login.php";
         Category:
         <select name="category" id="category">
           <option value="">All</option>
-          <?php foreach (R::findAll("category") as $category) { ?>
+          <?php foreach ($CURRENT_USER->ownCategoryList as $category) { ?>
             <option value="<?php echo htmlspecialchars($category->id);?>"
             <?php if (isset($_GET["category"]) && $_GET["category"] == $category->id) {
               echo " selected";

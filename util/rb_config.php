@@ -8,32 +8,17 @@ if (R::count("user") == 0) {
   $user->username = "admin";
   $user->password = password_hash("admin", PASSWORD_DEFAULT);
   $user->roles = "admin";
+  $user->ownCategoryList[] = R::dispense("category");
+  reset($user->ownCategoryList)->name = "Food";
+  reset($user->ownCategoryList)->user = $user;
+  $user->ownCategoryList[] = R::dispense("category");
+  reset($user->ownCategoryList)->name = "Transport";
+  reset($user->ownCategoryList)->user = $user;
+  $user->ownCategoryList[] = R::dispense("category");
+  reset($user->ownCategoryList)->name = "Enterainment";
+  reset($user->ownCategoryList)->user = $user;
+  $user->ownCategoryList[] = R::dispense("category");
+  reset($user->ownCategoryList)->name = "Other";
+  reset($user->ownCategoryList)->user = $user;
   R::store($user);
 }
-if (R::count("category") == 0) {
-  $category = R::dispense("category");
-  $category->name = "Food";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Transport";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Entertainment";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Other";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Education";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Housing";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Work";
-  R::store($category);
-  $category = R::dispense("category");
-  $category->name = "Benefits";
-  R::store($category);
-}
-?>
