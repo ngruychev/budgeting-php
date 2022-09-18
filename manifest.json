@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Budgeting",
+  "short_name": "Budgeting",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "type": "image/svg+xml",
+      "src": "img/favicon.svg",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#000000",
+  "description": "Budgeting app",
+  "orientation": "portrait",
+  "shortcuts": [
+    {
+      "description": "Add transaction",
+      "name": "Add transaction",
+      "url": "./edit_transaction.php?new",
+      "short_name": "Add tx",
+      "icons": [
+        {
+          "type": "image/svg+xml",
+          "src": "img/add.svg",
+          "sizes": "any",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "description": "Transaction overview",
+      "name": "Transaction overview",
+      "short_name": "Txs",
+      "url": "./transactions.php",
+      "icons": [
+        {
+          "type": "image/svg+xml",
+          "src": "img/list.svg",
+          "sizes": "any",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "description": "Statistics",
+      "name": "Statistics",
+      "short_name": "Stats",
+      "url": "./stats.php",
+      "icons": [
+        {
+          "type": "image/svg+xml",
+          "src": "img/chart.svg",
+          "sizes": "any",
+          "purpose": "any"
+        }
+      ]
+    }
+  ]
+}
