@@ -9,16 +9,16 @@ if (R::count("user") == 0) {
   $user->password = password_hash("admin", PASSWORD_DEFAULT);
   $user->roles = "admin";
   $user->ownCategoryList[] = R::dispense("category");
-  reset($user->ownCategoryList)->name = "Food";
-  reset($user->ownCategoryList)->user = $user;
+  end($user->ownCategoryList)->name = "Food";
+  end($user->ownCategoryList)->user = $user;
   $user->ownCategoryList[] = R::dispense("category");
-  reset($user->ownCategoryList)->name = "Transport";
-  reset($user->ownCategoryList)->user = $user;
+  end($user->ownCategoryList)->name = "Transport";
+  end($user->ownCategoryList)->user = $user;
   $user->ownCategoryList[] = R::dispense("category");
-  reset($user->ownCategoryList)->name = "Enterainment";
-  reset($user->ownCategoryList)->user = $user;
+  end($user->ownCategoryList)->name = "Enterainment";
+  end($user->ownCategoryList)->user = $user;
   $user->ownCategoryList[] = R::dispense("category");
-  reset($user->ownCategoryList)->name = "Other";
-  reset($user->ownCategoryList)->user = $user;
+  end($user->ownCategoryList)->name = "Other";
+  end($user->ownCategoryList)->user = $user;
   R::store($user);
 }

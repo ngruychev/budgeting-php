@@ -26,20 +26,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Log in</title>
   <?php require_once "component/head.php"; ?>
-  <link rel="stylesheet" href="style/login.css">
 </head>
 <body>
-  <form action="/login.php" method="post" id="login">
-    <h1 id="h1">Log in</h1>
-    <label for="username" id="username-label">
-      Username:
-      <input type="text" name="username" id="username">
-    </label>
-    <label for="password" id="password_label">
-      Password:
-      <input type="password" name="password" id="password">
-    </label>
-    <input id="login_button" type="submit" name="submit" value="Log in">
+  <form action="login.php" method="post" class="center_of_page">
+    <fieldset>
+      <legend>Log in</legend>
+      <label for="username">
+        Username:
+        <input type="text" name="username" id="username">
+      </label>
+      <br>
+      <label for="password">
+        Password:
+        <input type="password" name="password" id="password">
+      </label>
+      <br>
+      <input type="submit" name="submit" value="Log in">
+      <br>
+      No account? <a href="register.php">Register</a>
+    </fieldset>
   </form>
 </body>
 </html>
