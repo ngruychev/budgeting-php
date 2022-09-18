@@ -20,7 +20,7 @@ require_once "util/require_login.php";
   <ul>
     <li><a href="transactions.php" class="btn btn-sm btn-a">Transactions</a></li>
     <li><a href="stats.php" class="btn btn-sm btn-a">Stats</a></li>
-    <li><a href="edit_transaction?new" class="btn btn-sm btn-b">Add transaction</a></li>
+    <li><a href="edit_transaction.php?new" class="btn btn-sm btn-b">Add transaction</a></li>
   </ul>
   <p>
     On Chrome for Android, you can click the three dots in the top right corner,
