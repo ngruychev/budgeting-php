@@ -126,11 +126,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
       <br>
       <label for="description">
         Description:
+        <br>
         <textarea name="description" id="description" cols="30" rows="1"><?php echo htmlspecialchars($transaction->description); ?></textarea>
       </label>
       <br>
       <label for="comment">
         Comment:
+        <br>
         <textarea name="comment" id="comment" cols="30" rows="1"><?php echo htmlspecialchars($transaction->comment); ?></textarea>
       </label>
       <br>
