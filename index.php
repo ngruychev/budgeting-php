@@ -1,5 +1,5 @@
 <?php
-require_once "util/require_login.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,18 @@ require_once "util/require_login.php";
 </head>
 <body>
   <?php require_once "component/header.php"; ?>
-  <h1>Welcome, <?php echo htmlspecialchars($CURRENT_USER->username) ?></h1>
+  <?php if (isset($_SESSION["user_id"])) { ?>
+    <?php require_once "util/require_login.php"; ?>
+    <p class="msg msg--info">
+      <b>Welcome, <?php echo htmlspecialchars($CURRENT_USER->username) ?></b>
+    </p>
+  <?php } else { ?>
+    <p class="msg msg--info">
+      <strong>
+        You are not logged in. Log in to use the full functionality of this app.
+      </strong>
+    </p>
+  <?php } ?>
   <p>Here you can track your spending and earnings (under Transactions), and see statistics (under Stats)</p>
   <p>Click on the menu to get started</p>
   <p>Or, use these shortcuts:</p>
