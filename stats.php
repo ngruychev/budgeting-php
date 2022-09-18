@@ -93,7 +93,7 @@ require_once "util/rb_config.php";
       <dt>Overall balance</dt>
       <dd><?php echo htmlspecialchars($overall_balance); ?></dd>
       <dt>Spending by category</dt>
-      <dd>
+      <dd class="overflow-x-scroll">
         <table class="table">
           <thead>
             <tr>
@@ -112,7 +112,7 @@ require_once "util/rb_config.php";
         </table>
       </dd>
       <dt>Earning by category</dt>
-      <dd>
+      <dd class="overflow-x-scroll">
         <table class="table">
           <thead>
             <tr>
@@ -131,7 +131,7 @@ require_once "util/rb_config.php";
         </table>
       </dd>
       <dt>Spending by week</dt>
-      <dd>
+      <dd class="overflow-x-scroll">
         <table class="table">
           <thead>
             <tr>
@@ -150,7 +150,7 @@ require_once "util/rb_config.php";
         </table>
       </dd>
       <dt>Earning by week</dt>
-      <dd>
+      <dd class="overflow-x-scroll">
         <table class="table">
           <thead>
             <tr>
@@ -169,7 +169,7 @@ require_once "util/rb_config.php";
         </table>
       </dd>
       <dt>Spending by week by category</dt>
-      <dd>
+      <dd class="overflow-x-scroll">
         <table class="table">
           <thead>
             <tr>

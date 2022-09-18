@@ -66,24 +66,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </fieldset>
   </form>
   <h2>Categories</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($CURRENT_USER->ownCategoryList as $category) { ?>
+  <div class="overflow-x-scroll">
+    <table class="table">
+      <thead>
         <tr>
-          <td><?php echo htmlspecialchars($category->name); ?></td>
-          <td>
-            <a href="edit_category.php?id=<?php echo $category->id; ?>" class="btn btn-sm btn-a">Edit</a>
-          </td>
+          <th>Category</th>
+          <th>Edit</th>
         </tr>
-      <?php } ?>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <?php foreach ($CURRENT_USER->ownCategoryList as $category) { ?>
+          <tr>
+            <td><?php echo htmlspecialchars($category->name); ?></td>
+            <td>
+              <a href="edit_category.php?id=<?php echo $category->id; ?>" class="btn btn-sm btn-a">Edit</a>
+            </td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
   <form action="profile.php" method="post">
     <fieldset>
       <legend>Add category</legend>

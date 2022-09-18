@@ -116,34 +116,36 @@ require_once "util/require_login.php";
         ?>
       </dd>
     </dl>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Amount</th>
-          <th>Type</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Comment</th>
-          <th>Date</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($transactions as $transaction) { ?>
+    <div class="overflow-x-scroll">
+      <table class="table">
+        <thead>
           <tr>
-            <td><?php echo htmlspecialchars($transaction->amount / 100); ?></td>
-            <td><?php echo htmlspecialchars($transaction->type); ?></td>
-            <td><?php echo htmlspecialchars($transaction->category->name); ?></td>
-            <td><?php echo htmlspecialchars($transaction->description); ?></td>
-            <td><?php echo htmlspecialchars($transaction->comment); ?></td>
-            <td><?php echo htmlspecialchars($transaction->date); ?></td>
-            <td>
-              <a href="edit_transaction.php?id=<?php echo htmlspecialchars($transaction->id); ?>" class="btn btn-sm btn-a">Edit</a>
-            </td>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th>Edit</th>
           </tr>
-        <?php } ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <?php foreach ($transactions as $transaction) { ?>
+            <tr>
+              <td><?php echo htmlspecialchars($transaction->amount / 100); ?></td>
+              <td><?php echo htmlspecialchars($transaction->type); ?></td>
+              <td><?php echo htmlspecialchars($transaction->category->name); ?></td>
+              <td><?php echo htmlspecialchars($transaction->description); ?></td>
+              <td><?php echo htmlspecialchars($transaction->comment); ?></td>
+              <td><?php echo htmlspecialchars($transaction->date); ?></td>
+              <td>
+                <a href="edit_transaction.php?id=<?php echo htmlspecialchars($transaction->id); ?>" class="btn btn-sm btn-a">Edit</a>
+              </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
   <?php } ?>
 </body>
 </html>
