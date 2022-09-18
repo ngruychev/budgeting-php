@@ -95,5 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="submit" value="Add" class="btn btn-sm btn-b">
     </fieldset>
   </form>
+  <h2>Delete profile</h2>
+  <p>
+    <a href="delete_profile.php" class="btn btn-sm btn-c">Delete profile</a>
+  </p>
 </body>
 </html>
