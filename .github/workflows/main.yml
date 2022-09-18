@@ -22,15 +22,3 @@ jobs:
           data/**
           **/.git*/**
           **/node_modules/**
-
-    - name: 📂 Sync files 2
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ${{ secrets.FTP_SERVER_DIR_2 }}
-        exclude: |
-          data/**
-          **/.git*/**
-          **/node_modules/**
