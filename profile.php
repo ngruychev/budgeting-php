@@ -65,6 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input id="login_button" type="submit" name="submit" value="Change password">
     </fieldset>
   </form>
+  <form action="export_user_data.php" method="post">
+    <fieldset>
+      <legend>Export data</legend>
+      <input type="submit" value="Export data" class="btn btn-sm btn-b">
+    </fieldset>
+  </form>
   <h2>Categories</h2>
   <div class="overflow-x-scroll">
     <table class="table">
