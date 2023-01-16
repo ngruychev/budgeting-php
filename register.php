@@ -33,7 +33,7 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     end($user->ownCategoryList)->name = "Other";
     end($user->ownCategoryList)->user = $user;
     R::store($user);
-    session_start();
+    require_once "util/session.php";
     $_SESSION["user_id"] = $user->id;
     header("Location: index.php");
     exit;

@@ -6,7 +6,7 @@
     $user = R::findOne("user", "username = ?", [$username]);
     if ($user) {
       if (password_verify($password, $user->password)) {
-        session_start();
+        require_once "./util/session.php";
         $_SESSION["user_id"] = $user->id;
         header("Location: index.php");
         exit;
